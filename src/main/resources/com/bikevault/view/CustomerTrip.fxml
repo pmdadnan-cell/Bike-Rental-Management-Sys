@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.bikevault.controller.CustomerTripController">
+    <VBox fx:id="loadingPane" spacing="10" alignment="CENTER" visible="false" managed="false">
+        <ProgressIndicator prefWidth="28" prefHeight="28"/>
+        <Label text="Loading rental details..." styleClass="trip-data"/>
+    </VBox>
+    <VBox fx:id="errorPane" spacing="12" alignment="CENTER_LEFT" visible="false" managed="false">
+        <padding>
+            <Insets top="24" right="24" bottom="24" left="24"/>
+        </padding>
+        <Label text="Unable to load rental details." styleClass="customer-title"/>
+        <Label fx:id="errorLabel" wrapText="true" styleClass="trip-data"/>
+        <Button text="RETRY" styleClass="primary-button" onAction="#onRetry"/>
+        <Button text="BACK TO TRIPS" styleClass="ghost-button" onAction="#onBack"/>
+    </VBox>
+    <ScrollPane fx:id="contentPane" fitToWidth="true" focusTraversable="false"
+                style="-fx-background: transparent;">
+        <VBox spacing="16">
+            <padding>
+                <Insets top="18" right="24" bottom="24" left="24"/>
+            </padding>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← BACK TO TRIPS" styleClass="ghost-button" onAction="#onBack"/>
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                    <Label text="TRIP DETAILS" styleClass="customer-kicker"/>
+                    <Label fx:id="rentalIdLabel" text="RV-—" styleClass="customer-title"/>
+                </VBox>
+                <Label fx:id="statusBadge" text="STATUS" styleClass="status-badge"/>
+            </HBox>
+            <VBox spacing="10" styleClass="trip-detail-card">
+                <Label text="BIKE" styleClass="customer-kicker"/>
+                <StackPane fx:id="bikeImageHost" prefHeight="168" maxHeight="168"/>
+                <Label fx:id="bikeLabel" wrapText="true" styleClass="trip-data"/>
+                <Label fx:id="summaryLabel" wrapText="true" styleClass="trip-data"/>
+            </VBox>
+            <VBox spacing="10" styleClass="trip-detail-card">
+                <Label text="PAYMENT" styleClass="customer-kicker"/>
+                <Label fx:id="paymentLabel" wrapText="true" styleClass="trip-data"/>
+            </VBox>
+            <VBox spacing="10" styleClass="trip-detail-card">
+                <Label text="RENTAL QR" styleClass="customer-kicker"/>
+                <ImageView fx:id="qrView" fitWidth="200" fitHeight="200" preserveRatio="true" smooth="true"/>
+                <Label fx:id="qrLabel" wrapText="true" styleClass="trip-data"/>
+                <Button text="SHOW RENTAL QR" styleClass="primary-button" onAction="#onShowQr" prefWidth="200"/>
+            </VBox>
+            <Label fx:id="messageLabel" wrapText="true" styleClass="trip-data"/>
+            <HBox spacing="10">
+                <Button fx:id="returnButton" text="RETURN BIKE" styleClass="primary-button" onAction="#onReturn"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+</StackPane>

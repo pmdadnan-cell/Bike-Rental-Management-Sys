@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.RentalController"
+      spacing="14" styleClass="module-root">
+    <padding>
+        <Insets top="8" right="18" bottom="16" left="18"/>
+    </padding>
+
+    <Label text="Rentals" styleClass="section-title"/>
+    <Label text="Review live rentals and accept bike returns." wrapText="true" styleClass="muted-label"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search rental, customer, bike…" prefWidth="260" onAction="#onSearch"/>
+        <ComboBox fx:id="statusFilter" prefWidth="180" onAction="#onSearch"/>
+        <Button text="Search" styleClass="secondary-button" onAction="#onSearch"/>
+        <Button text="Refresh" styleClass="ghost-button" onAction="#onRefresh"/>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Button text="SCAN RETURN QR" styleClass="primary-button" onAction="#onScanReturnQr"/>
+    </HBox>
+
+    <Label text="RETURN REQUESTS" styleClass="panel-title"/>
+    <FlowPane fx:id="returnPane" hgap="12" vgap="12"/>
+
+    <Label text="ALL RENTALS" styleClass="panel-title"/>
+    <ScrollPane fitToWidth="true" focusTraversable="false" VBox.vgrow="ALWAYS">
+        <FlowPane fx:id="rentalPane" hgap="12" vgap="12"/>
+    </ScrollPane>
+</VBox>

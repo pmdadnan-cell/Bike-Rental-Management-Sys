@@ -1,0 +1,15 @@
+target/
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.log
+.DS_Store
+Thumbs.db
+generated_qr/*.png
+!generated_qr/.gitkeep
+*.class
+hs_err_pid*
+replay_pid*

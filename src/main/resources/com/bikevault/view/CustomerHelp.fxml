@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.CustomerHelpController" spacing="10">
+    <padding>
+        <Insets top="18" right="24" bottom="18" left="24"/>
+    </padding>
+    <Label text="Help" styleClass="customer-title"/>
+    <Label wrapText="true" text="BikeVault is a desktop application. Do not open a browser or localhost:8080. Browse available bikes, choose dates, confirm the rental, then complete a simulated payment (CASH, CARD, or UPI). Return the bike from Home or My Rentals. Show your rental QR to the administrator for collection and return. Penalty amounts are official; pay unpaid penalties from My Penalties."/>
+</VBox>

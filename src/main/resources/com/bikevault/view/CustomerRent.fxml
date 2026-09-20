@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.CustomerRentController" spacing="14">
+    <padding>
+        <Insets top="18" right="24" bottom="18" left="24"/>
+    </padding>
+    <Label text="Request this ride" styleClass="customer-title"/>
+    <HBox spacing="18">
+        <ImageView fx:id="bikeImage" fitWidth="360" fitHeight="200" preserveRatio="true" smooth="true"/>
+        <VBox spacing="8" styleClass="trip-card" prefWidth="280">
+            <Label fx:id="bikeLabel" styleClass="bike-card-model"/>
+            <Label fx:id="categoryLabel" styleClass="customer-tagline"/>
+            <Label fx:id="rateLabel" styleClass="bike-card-price"/>
+            <Label text="Start date" styleClass="field-label"/>
+            <DatePicker fx:id="startPicker"/>
+            <Label text="Return date" styleClass="field-label"/>
+            <DatePicker fx:id="returnPicker"/>
+            <Label text="Number of days" styleClass="field-label"/>
+            <Label fx:id="daysLabel"/>
+        </VBox>
+        <VBox spacing="8" styleClass="trip-card" HBox.hgrow="ALWAYS">
+            <Label text="RENTAL PRICE" styleClass="customer-kicker"/>
+            <Label text="Daily rate" styleClass="field-label"/>
+            <Label fx:id="rateLineLabel"/>
+            <Label text="Rental subtotal" styleClass="field-label"/>
+            <Label fx:id="baseLabel" styleClass="bike-card-price"/>
+            <Label text="Penalty" styleClass="field-label"/>
+            <Label fx:id="depositLabel" text="₹ 0"/>
+            <Label text="TOTAL" styleClass="customer-kicker"/>
+            <Label fx:id="totalLabel" styleClass="bike-card-price"/>
+            <Label fx:id="summaryLabel" wrapText="true"/>
+            <HBox spacing="10">
+                <Button text="CONTINUE" styleClass="primary-button" onAction="#onConfirm"/>
+                <Button text="CANCEL" styleClass="ghost-button" onAction="#onCancel"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>

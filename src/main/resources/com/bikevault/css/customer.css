@@ -1,0 +1,363 @@
+/* BIKEVAULT customer marketplace — cream and gold, distinct from the admin dashboard. */
+
+.customer-root {
+    -fx-background-color: #F4EFE4;
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    -fx-accent: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-selection-bar: transparent;
+    -fx-selection-bar-non-focused: transparent;
+}
+
+.customer-root .vbox:focused,
+.customer-root .hbox:focused,
+.customer-root .flow-pane:focused,
+.customer-root .scroll-pane:focused,
+.customer-root .trip-card:focused,
+.customer-root .trip-detail-card:focused,
+.customer-root .stack-pane:focused {
+    -fx-background-color: inherit;
+    -fx-effect: none;
+}
+
+.customer-sidebar {
+    -fx-background-color: #1A140C;
+    -fx-padding: 18 14 18 14;
+}
+
+.customer-brand-title {
+    -fx-text-fill: #F3E6C0;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2px;
+}
+
+.customer-brand-sub {
+    -fx-text-fill: #C4A35A;
+    -fx-font-size: 11px;
+}
+
+.customer-nav {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8D9B0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 12 10 12;
+    -fx-background-radius: 10;
+    -fx-font-size: 13px;
+}
+
+.customer-nav:hover {
+    -fx-background-color: rgba(212, 160, 23, 0.16);
+}
+
+.customer-nav.nav-active {
+    -fx-background-color: #D4A017;
+    -fx-text-fill: #1A140C;
+    -fx-font-weight: bold;
+}
+
+.customer-workspace {
+    -fx-background-color: #F4EFE4;
+}
+
+.customer-root .label,
+.customer-workspace .label,
+.trip-card .label,
+.trip-detail-card .label,
+.trip-empty-card .label {
+    -fx-text-fill: #1A140C;
+}
+
+.trip-data {
+    -fx-text-fill: #1A140C;
+    -fx-font-size: 13px;
+    -fx-line-spacing: 4px;
+}
+
+.customer-header {
+    -fx-background-color: #FFF8EA;
+    -fx-border-color: #E5D7B8;
+    -fx-border-width: 0 0 1 0;
+}
+
+.customer-kicker {
+    -fx-text-fill: #B8860B;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1.5px;
+}
+
+.customer-title {
+    -fx-text-fill: #1A140C;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.customer-hero {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A140C;
+}
+
+.customer-tagline {
+    -fx-font-size: 16px;
+    -fx-text-fill: #6B5A3A;
+}
+
+.stat-pill {
+    -fx-background-color: #FFF8EA;
+    -fx-background-radius: 14;
+    -fx-padding: 14 18 14 18;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 14;
+}
+
+.stat-pill-label {
+    -fx-text-fill: #8A7548;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.stat-pill-value {
+    -fx-text-fill: #1A140C;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.bike-card {
+    -fx-background-color: #FFFDF8;
+    -fx-background-radius: 16;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(80, 60, 20, 0.12), 16, 0.2, 0, 6);
+}
+
+.bike-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(80, 60, 20, 0.20), 20, 0.22, 0, 8);
+}
+
+.bike-image-frame,
+.bike-card-image {
+    -fx-background-color: #0B0F14;
+    -fx-background-radius: 16 16 0 0;
+}
+
+.bike-card-brand {
+    -fx-text-fill: #8A7548;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.bike-card-model {
+    -fx-text-fill: #1A140C;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.bike-card-meta {
+    -fx-text-fill: #6B5A3A;
+}
+
+.bike-card-price {
+    -fx-text-fill: #B8860B;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.status-badge {
+    -fx-background-radius: 999;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-available {
+    -fx-background-color: #D8F3E2;
+    -fx-text-fill: #1B7A45;
+}
+
+.badge-rented {
+    -fx-background-color: #FDE7C7;
+    -fx-text-fill: #9A5B00;
+}
+
+.badge-maintenance {
+    -fx-background-color: #F8D4D4;
+    -fx-text-fill: #A12626;
+}
+
+.badge-inactive {
+    -fx-background-color: #E6E1D6;
+    -fx-text-fill: #5C5346;
+}
+
+.active-rental-card {
+    -fx-background-color: #1A140C;
+    -fx-background-radius: 18;
+    -fx-padding: 18 22 18 22;
+}
+
+.active-rental-card .label {
+    -fx-text-fill: #F3E6C0;
+}
+
+.customer-panel {
+    -fx-background-color: #FFFDF8;
+    -fx-background-radius: 16;
+    -fx-padding: 16;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 16;
+}
+
+.customer-root .input-field {
+    -fx-background-color: #FFFDF8;
+    -fx-text-fill: #1A140C;
+    -fx-border-color: #D9C9A0;
+}
+
+.customer-root .field-label {
+    -fx-text-fill: #6B5A3A;
+}
+
+.customer-root .data-table {
+    -fx-background-color: #FFFDF8;
+}
+
+.customer-root .table-view .column-header-background {
+    -fx-background-color: #F4E9D0;
+}
+
+.customer-root .table-view .column-header .label {
+    -fx-text-fill: #1A140C;
+}
+
+.customer-root .table-row-cell {
+    -fx-background-color: #FFFDF8;
+}
+
+.customer-root .table-row-cell .text {
+    -fx-fill: #1A140C;
+}
+
+.trip-card {
+    -fx-background-color: #FFFDF8;
+    -fx-background-radius: 16;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 16;
+    -fx-padding: 16 18;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-min-width: 400;
+}
+
+.trip-detail-card {
+    -fx-background-color: #FFFDF8;
+    -fx-background-radius: 14;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 14;
+    -fx-padding: 14 16;
+}
+
+.trip-empty-card {
+    -fx-background-color: #FFF8EA;
+    -fx-background-radius: 12;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 12;
+    -fx-padding: 10 14;
+}
+
+.compact-card {
+    -fx-background-color: #FFFDF8;
+    -fx-background-radius: 12;
+    -fx-border-color: #E5D7B8;
+    -fx-border-radius: 12;
+    -fx-padding: 10 12;
+}
+
+.timeline-step {
+    -fx-text-fill: #8A7548;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.timeline-step-active {
+    -fx-text-fill: #1A140C;
+    -fx-background-color: #D4A017;
+    -fx-background-radius: 999;
+    -fx-padding: 4 10 4 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.timeline-arrow {
+    -fx-text-fill: #C4A35A;
+}
+
+.status-badge {
+    -fx-text-fill: #8A6A18;
+    -fx-font-weight: bold;
+}
+
+.rental-pass {
+    -fx-background-color: linear-gradient(to bottom, #241C12 0%, #1A140C 100%);
+    -fx-background-radius: 22;
+    -fx-border-color: #D4A017;
+    -fx-border-radius: 22;
+    -fx-border-width: 1.2;
+    -fx-padding: 22 26 24 26;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 24, 0.2, 0, 10);
+}
+
+.pass-status {
+    -fx-background-color: #D4A017;
+    -fx-text-fill: #1A140C;
+    -fx-background-radius: 999;
+    -fx-padding: 4 12 4 12;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.pass-brand {
+    -fx-text-fill: #D4A017;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 3px;
+}
+
+.pass-body {
+    -fx-text-fill: #F3E6C0;
+    -fx-font-size: 13px;
+}
+
+.customer-root .customer-kicker,
+.customer-kicker {
+    -fx-text-fill: #B8860B;
+}
+
+.customer-root .customer-nav,
+.customer-nav {
+    -fx-text-fill: #E8D9B0;
+}
+
+.customer-nav.nav-active {
+    -fx-text-fill: #1A140C;
+}
+
+.customer-root .customer-brand-title { -fx-text-fill: #F3E6C0; }
+.customer-root .customer-brand-sub { -fx-text-fill: #C4A35A; }
+.customer-root .pass-brand { -fx-text-fill: #D4A017; }
+.customer-root .pass-body { -fx-text-fill: #F3E6C0; }
+.customer-root .pass-status { -fx-text-fill: #1A140C; }
+.customer-root .bike-card-brand { -fx-text-fill: #8A7548; }
+.customer-root .bike-card-price { -fx-text-fill: #B8860B; }
+.customer-root .stat-pill-label { -fx-text-fill: #8A7548; }
+.customer-root .customer-tagline { -fx-text-fill: #6B5A3A; }
+.customer-root .bike-card-meta { -fx-text-fill: #6B5A3A; }
+.active-rental-card .label { -fx-text-fill: #F3E6C0; }
+
+.customer-root .primary-button,
+.customer-root .secondary-button,
+.customer-root .ghost-button {
+    -fx-ellipsis-string: "";
+}

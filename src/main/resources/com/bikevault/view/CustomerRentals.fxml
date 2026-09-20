@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.CustomerRentalsController" spacing="12">
+    <padding>
+        <Insets top="16" right="22" bottom="16" left="22"/>
+    </padding>
+    <HBox alignment="CENTER_LEFT">
+        <Label text="My rentals" styleClass="customer-title" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="PAY SELECTED" styleClass="primary-button" onAction="#onPay"/>
+    </HBox>
+    <TableView fx:id="table" styleClass="data-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="Rental ID" prefWidth="90"/>
+            <TableColumn fx:id="bikeColumn" text="Bike" prefWidth="160"/>
+            <TableColumn fx:id="startColumn" text="Start" prefWidth="110"/>
+            <TableColumn fx:id="expectedColumn" text="Expected return" prefWidth="130"/>
+            <TableColumn fx:id="actualColumn" text="Actual return" prefWidth="120"/>
+            <TableColumn fx:id="daysColumn" text="Duration" prefWidth="90"/>
+            <TableColumn fx:id="amountColumn" text="Amount" prefWidth="100"/>
+            <TableColumn fx:id="penaltyColumn" text="Penalty" prefWidth="100"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="110"/>
+        </columns>
+    </TableView>
+</VBox>

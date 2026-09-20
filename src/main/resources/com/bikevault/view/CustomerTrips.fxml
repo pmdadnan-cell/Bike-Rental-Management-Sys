@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bikevault.controller.CustomerTripsController"
+            fitToWidth="true" style="-fx-background: transparent;">
+    <VBox spacing="16">
+        <padding>
+            <Insets top="18" right="24" bottom="24" left="24"/>
+        </padding>
+        <Label text="My Trips" styleClass="customer-title"/>
+        <Label text="Your rentals, QR pass, and spending in one place." styleClass="customer-tagline"/>
+        <HBox spacing="12">
+            <VBox styleClass="stat-pill" spacing="4">
+                <Label text="TOTAL TRIPS" styleClass="stat-pill-label"/>
+                <Label fx:id="totalValue" text="0" styleClass="stat-pill-value"/>
+            </VBox>
+            <VBox styleClass="stat-pill" spacing="4">
+                <Label text="ACTIVE" styleClass="stat-pill-label"/>
+                <Label fx:id="activeValue" text="0" styleClass="stat-pill-value"/>
+            </VBox>
+            <VBox styleClass="stat-pill" spacing="4">
+                <Label text="PENDING" styleClass="stat-pill-label"/>
+                <Label fx:id="pendingValue" text="0" styleClass="stat-pill-value"/>
+            </VBox>
+            <VBox styleClass="stat-pill" spacing="4">
+                <Label text="TOTAL SPENT" styleClass="stat-pill-label"/>
+                <Label fx:id="spentValue" text="₹ 0" styleClass="stat-pill-value"/>
+            </VBox>
+        </HBox>
+        <FlowPane fx:id="tripPane" hgap="14" vgap="14"/>
+    </VBox>
+</ScrollPane>

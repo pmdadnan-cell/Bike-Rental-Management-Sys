@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.PaymentController"
+      spacing="14" styleClass="module-root">
+    <padding>
+        <Insets top="8" right="18" bottom="16" left="18"/>
+    </padding>
+    <Label text="Payments" styleClass="section-title"/>
+    <Label text="Rental and penalty payments collected in BikeVault." wrapText="true" styleClass="muted-label"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search payment, customer, rental…" prefWidth="280" onAction="#onSearch"/>
+        <Button text="Search" styleClass="secondary-button" onAction="#onSearch"/>
+        <Button text="Refresh" styleClass="ghost-button" onAction="#onRefresh"/>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Label fx:id="todayRevenueLabel" text="TODAY ₹ —" styleClass="field-label"/>
+        <Label fx:id="paidLabel" text="PAID —" styleClass="field-label"/>
+    </HBox>
+    <ScrollPane fitToWidth="true" focusTraversable="false" VBox.vgrow="ALWAYS">
+        <FlowPane fx:id="paymentPane" hgap="12" vgap="12"/>
+    </ScrollPane>
+</VBox>

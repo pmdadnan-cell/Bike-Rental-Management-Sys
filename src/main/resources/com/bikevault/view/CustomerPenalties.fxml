@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bikevault.controller.CustomerPenaltiesController"
+            fitToWidth="true" focusTraversable="false" style="-fx-background: transparent;">
+    <VBox spacing="14">
+        <padding>
+            <Insets top="18" right="24" bottom="24" left="24"/>
+        </padding>
+        <Label text="My Penalties" styleClass="customer-title"/>
+        <Label text="Charges applied by BikeVault for this account." wrapText="true" styleClass="customer-tagline"/>
+        <FlowPane fx:id="penaltyPane" hgap="14" vgap="14"/>
+    </VBox>
+</ScrollPane>

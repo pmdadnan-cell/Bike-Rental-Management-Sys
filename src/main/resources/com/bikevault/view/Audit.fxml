@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.AuditController" spacing="10" styleClass="module-root">
+    <padding>
+        <Insets top="8" right="18" bottom="16" left="18"/>
+    </padding>
+    <Label text="Audit Log" styleClass="section-title"/>
+    <Label text="Authentication, rentals, payments, bikes, and administrative activity." styleClass="muted-label"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search action, user, or detail…" prefWidth="360" onAction="#onSearch"/>
+        <ComboBox fx:id="filterCombo" prefWidth="200" onAction="#onSearch"/>
+    </HBox>
+    <TableView fx:id="table" styleClass="data-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="timeColumn" text="Time" prefWidth="180"/>
+            <TableColumn fx:id="userColumn" text="User" prefWidth="140"/>
+            <TableColumn fx:id="actionColumn" text="Action" prefWidth="180"/>
+            <TableColumn fx:id="detailColumn" text="Detail" prefWidth="420"/>
+        </columns>
+    </TableView>
+</VBox>

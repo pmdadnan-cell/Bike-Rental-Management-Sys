@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: bikevault-mysql
+    environment:
+      MYSQL_DATABASE: bikevault
+      MYSQL_USER: bikevault
+      MYSQL_PASSWORD: bikevault
+      MYSQL_ROOT_PASSWORD: bikevault_root
+    ports:
+      - "${DB_PORT:-3307}:3306"
+    volumes:
+      - bikevault_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ubikevault", "-pbikevault"]
+      interval: 8s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  bikevault_data:

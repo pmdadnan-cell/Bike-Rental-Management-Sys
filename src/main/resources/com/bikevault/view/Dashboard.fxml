@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bikevault.controller.DashboardController"
+            styleClass="app-root"
+            stylesheets="@../css/style.css">
+
+    <left>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    prefWidth="248" styleClass="sidebar-scroll">
+            <VBox styleClass="sidebar" prefWidth="232" spacing="3">
+                <padding>
+                    <Insets top="16" right="10" bottom="16" left="10"/>
+                </padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="sidebar-brand">
+                    <ImageView fx:id="brandMarkView" fitWidth="40" fitHeight="40" preserveRatio="true" smooth="true"/>
+                    <VBox spacing="0">
+                        <Label text="BIKEVAULT" styleClass="sidebar-brand-title"/>
+                        <Label text="CONTROL CENTER" styleClass="sidebar-brand-sub"/>
+                    </VBox>
+                </HBox>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <Label text="OVERVIEW" styleClass="nav-group"/>
+                <Button fx:id="navDashboard" text="Dashboard" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavDashboard"/>
+
+                <Label text="OPERATIONS" styleClass="nav-group"/>
+                <Button fx:id="navApproval" text="Approvals" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavApproval"/>
+                <Button fx:id="navRentals" text="Rentals" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavRentals"/>
+                <Button fx:id="navBikes" text="Bikes" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavBikes"/>
+                <Button fx:id="navCustomers" text="Customers" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavCustomers"/>
+
+                <Label text="FINANCE" styleClass="nav-group"/>
+                <Button fx:id="navPayments" text="Payments" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavPayments"/>
+                <Button fx:id="navPenalties" text="Penalties" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavPenalties"/>
+
+                <Label text="MONITORING" styleClass="nav-group"/>
+                <Button fx:id="navAudit" text="Audit Log" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavAudit"/>
+
+                <Label text="ANALYTICS" styleClass="nav-group"/>
+                <Button fx:id="navReports" text="Reports" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavReports"/>
+
+                <Label text="SYSTEM" styleClass="nav-group"/>
+                <Button fx:id="navSettings" text="Settings" styleClass="nav-button" maxWidth="Infinity"
+                        mnemonicParsing="false" onAction="#onNavSettings"/>
+            </VBox>
+        </ScrollPane>
+    </left>
+
+    <center>
+        <VBox styleClass="workspace" spacing="0">
+            <HBox styleClass="workspace-header control-header" spacing="14" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10" right="18" bottom="10" left="18"/>
+                </padding>
+                <VBox spacing="1">
+                    <Label text="BIKEVAULT" styleClass="header-brand"/>
+                    <Label text="Control Center" styleClass="header-sub"/>
+                </VBox>
+                <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <TextField fx:id="headerSearchField" promptText="Search activity..." prefWidth="320"
+                               maxWidth="420" styleClass="header-search" onAction="#onHeaderSearch"/>
+                </HBox>
+                <Label fx:id="systemStatusLabel" text="● SYSTEM ONLINE" styleClass="system-online"/>
+                <Label fx:id="clockLabel" text="" styleClass="clock-label"/>
+                <Separator orientation="VERTICAL" prefHeight="26"/>
+                <ImageView fx:id="headerBellView" fitWidth="18" fitHeight="18" preserveRatio="true" smooth="true"/>
+                <Separator orientation="VERTICAL" prefHeight="26"/>
+                <Label fx:id="adminAvatarLabel" text="A" styleClass="admin-avatar"/>
+                <VBox spacing="0">
+                    <Label fx:id="userNameLabel" text="Administrator" styleClass="header-user-name"/>
+                    <Label fx:id="userRoleLabel" text="ADMIN" styleClass="header-user-role"/>
+                </VBox>
+                <Button fx:id="headerLogoutButton" text="Logout" styleClass="header-logout"
+                        mnemonicParsing="false" minWidth="96" onAction="#onLogout"/>
+            </HBox>
+
+            <StackPane fx:id="contentHost" styleClass="content-host" VBox.vgrow="ALWAYS">
+                <VBox fx:id="homeView" spacing="16" styleClass="dashboard-home">
+                    <padding>
+                        <Insets top="8" right="22" bottom="18" left="22"/>
+                    </padding>
+
+                    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+                        <Label fx:id="sectionTitleLabel" text="Dashboard" styleClass="section-title"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Label text="Period" styleClass="field-label"/>
+                        <ComboBox fx:id="periodCombo" prefWidth="140" onAction="#onPeriodChanged"/>
+                        <Label text="As of" styleClass="field-label"/>
+                        <DatePicker fx:id="asOfDatePicker" prefWidth="140" onAction="#onAsOfDateChanged"/>
+                        <ProgressIndicator fx:id="busyIndicator" prefWidth="22" prefHeight="22" visible="false" managed="false"/>
+                        <Button fx:id="refreshButton" text="Refresh" styleClass="secondary-button" onAction="#onRefresh"/>
+                    </HBox>
+
+                    <GridPane hgap="14" vgap="14" styleClass="metric-grid">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                            <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                            <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                            <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                        </rowConstraints>
+
+                        <HBox spacing="12" styleClass="stat-card highlight-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <ImageView fx:id="revenueIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label fx:id="revenueValue" text="—" styleClass="stat-value"/>
+                                <Label fx:id="revenueTitleLabel" text="TOTAL REVENUE" styleClass="stat-label"/>
+                                <Label fx:id="revenueTrendLabel" text="" styleClass="stat-trend"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <ImageView fx:id="activeRentalsIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label fx:id="activeRentalsValue" text="—" styleClass="stat-value"/>
+                                <Label text="ACTIVE RENTALS" styleClass="stat-label"/>
+                                <Label text="Live collections" styleClass="stat-trend"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                              onMouseClicked="#onNavApproval">
+                            <ImageView fx:id="totalRevenueIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label fx:id="pendingApprovalsValue" text="—" styleClass="stat-value"/>
+                                <Label text="PENDING APPROVALS" styleClass="stat-label"/>
+                                <Label text="Review queue" styleClass="stat-trend"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                            <ImageView fx:id="availableIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label fx:id="availableValue" text="—" styleClass="stat-value"/>
+                                <Label text="AVAILABLE BIKES" styleClass="stat-label"/>
+                                <Label fx:id="availabilityLabel" text="Fleet ready" styleClass="stat-trend"/>
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <ImageView fx:id="totalBikesIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="TOTAL BIKES" styleClass="stat-label"/>
+                                <Label fx:id="totalBikesValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <ImageView fx:id="rentedIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="RENTED" styleClass="stat-label"/>
+                                <Label fx:id="rentedValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <ImageView fx:id="maintenanceIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="MAINTENANCE" styleClass="stat-label"/>
+                                <Label fx:id="maintenanceValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <ImageView fx:id="customersIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="CUSTOMERS" styleClass="stat-label"/>
+                                <Label fx:id="customersValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <ImageView fx:id="pendingPayIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="PENDING PAYMENTS" styleClass="stat-label"/>
+                                <Label fx:id="pendingPayValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <ImageView fx:id="pendingReturnIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="PENDING RETURNS" styleClass="stat-label"/>
+                                <Label fx:id="pendingReturnValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <ImageView fx:id="penaltyIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="PENALTIES" styleClass="stat-label"/>
+                                <Label fx:id="penaltyValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="12" styleClass="stat-card" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <ImageView fx:id="incidentIcon" fitWidth="42" fitHeight="42"/>
+                            <VBox spacing="2">
+                                <Label text="COMPLETED" styleClass="stat-label"/>
+                                <Label fx:id="incidentValue" text="—" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+                    </GridPane>
+
+                    <HBox spacing="14">
+                        <VBox spacing="8" styleClass="table-panel" HBox.hgrow="ALWAYS" prefHeight="260">
+                            <Label text="RENTAL ACTIVITY" styleClass="panel-title"/>
+                            <TableView fx:id="recentTable" styleClass="data-table" VBox.vgrow="ALWAYS" prefHeight="210">
+                                <columns>
+                                    <TableColumn fx:id="timeColumn" text="Time" prefWidth="150"/>
+                                    <TableColumn fx:id="userColumn" text="User" prefWidth="120"/>
+                                    <TableColumn fx:id="actionColumn" text="Action" prefWidth="140"/>
+                                    <TableColumn fx:id="detailColumn" text="Detail" prefWidth="280"/>
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                </columnResizePolicy>
+                            </TableView>
+                        </VBox>
+                        <VBox spacing="10" styleClass="table-panel" prefWidth="320">
+                            <Label text="BIKE FLEET STATUS" styleClass="panel-title"/>
+                            <Label fx:id="fleetAvailableLabel" text="AVAILABLE" styleClass="fleet-line"/>
+                            <Label fx:id="fleetRentedLabel" text="RENTED" styleClass="fleet-line"/>
+                            <Label fx:id="fleetMaintLabel" text="MAINTENANCE" styleClass="fleet-line"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="8" styleClass="table-panel">
+                        <Label text="PENDING APPROVALS" styleClass="panel-title"/>
+                        <Label fx:id="pendingEmptyLabel" text="No pending approvals" styleClass="muted-label"/>
+                        <FlowPane fx:id="pendingApprovalPane" hgap="12" vgap="12"/>
+                    </VBox>
+                </VBox>
+            </StackPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox styleClass="status-bar" spacing="16" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="8" right="18" bottom="8" left="18"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Ready" styleClass="status-text" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Label fx:id="dbStatusLabel" text="Database: checking…" styleClass="db-status"/>
+        </HBox>
+    </bottom>
+</BorderPane>

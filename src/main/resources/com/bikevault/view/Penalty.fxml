@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.PenaltyController" spacing="12" styleClass="module-root">
+    <padding>
+        <Insets top="8" right="18" bottom="16" left="18"/>
+    </padding>
+    <Label text="Penalties" styleClass="section-title"/>
+    <Label text="Apply a simple charge. Customers see it under My Penalties." wrapText="true" styleClass="muted-label"/>
+    <HBox spacing="16">
+        <VBox spacing="8" prefWidth="340" styleClass="form-card">
+            <Label text="APPLY PENALTY" styleClass="panel-title"/>
+            <ComboBox fx:id="customerCombo" maxWidth="Infinity" promptText="Customer"/>
+            <ComboBox fx:id="typeCombo" maxWidth="Infinity" promptText="Type"/>
+            <TextField fx:id="amountField" promptText="Amount"/>
+            <TextField fx:id="rentalField" promptText="Rental ID"/>
+            <TextField fx:id="bikeField" promptText="Bike ID"/>
+            <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Description"/>
+            <Button text="APPLY PENALTY" styleClass="primary-button" onAction="#onAdd"/>
+        </VBox>
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <HBox spacing="8">
+                <TextField fx:id="searchField" promptText="Search penalties…" prefWidth="220" onAction="#onSearch"/>
+                <ComboBox fx:id="statusCombo" prefWidth="140" onAction="#onSearch"/>
+                <Button text="Refresh" styleClass="ghost-button" onAction="#onRefresh"/>
+            </HBox>
+            <ScrollPane fitToWidth="true" focusTraversable="false" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="penaltyPane" hgap="12" vgap="12"/>
+            </ScrollPane>
+        </VBox>
+    </HBox>
+</VBox>

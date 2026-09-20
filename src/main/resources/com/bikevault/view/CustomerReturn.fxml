@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.CustomerReturnController" spacing="14">
+    <padding>
+        <Insets top="18" right="24" bottom="18" left="24"/>
+    </padding>
+    <Label text="Return bike" styleClass="customer-title"/>
+    <Label text="Request bike return?" styleClass="customer-kicker"/>
+    <Label fx:id="summaryLabel" wrapText="true" styleClass="customer-panel"/>
+    <HBox spacing="10">
+        <Button text="CANCEL" styleClass="ghost-button" onAction="#onCancel" prefWidth="140"/>
+        <Button fx:id="requestButton" text="REQUEST RETURN" styleClass="primary-button" onAction="#onConfirm" prefWidth="200"/>
+    </HBox>
+</VBox>

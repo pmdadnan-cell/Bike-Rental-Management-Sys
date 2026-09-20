@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.bikevault.controller.QRScannerController"
+           styleClass="module-root">
+    <VBox spacing="16" alignment="TOP_CENTER" maxWidth="820">
+        <padding>
+            <Insets top="12" right="24" bottom="20" left="24"/>
+        </padding>
+
+        <Label fx:id="scannerTitle" text="SCAN BIKE QR" styleClass="section-title"/>
+        <Label fx:id="scannerHint" text="Live camera feed decodes the identity, then MySQL verifies it." styleClass="muted-label"/>
+
+        <StackPane styleClass="camera-stage" prefHeight="340" maxHeight="360">
+            <ImageView fx:id="cameraView" fitWidth="720" fitHeight="340" preserveRatio="true"/>
+            <Label fx:id="cameraHint" text="Camera idle" styleClass="camera-hint"/>
+        </StackPane>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="startButton" text="Start Camera" styleClass="primary-button" onAction="#onStartCamera"/>
+            <Button fx:id="stopButton" text="Stop Camera" styleClass="secondary-button" onAction="#onStopCamera"/>
+            <Button fx:id="scanButton" text="Scan / Detect" styleClass="secondary-button" onAction="#onScanDetect"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="manualField" promptText="Or paste QR identity / payload" prefWidth="420" onAction="#onManualVerify"/>
+            <Button text="Verify" styleClass="ghost-button" onAction="#onManualVerify"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" text="Waiting for QR..." styleClass="scan-status"/>
+
+        <VBox spacing="6" styleClass="result-card" alignment="CENTER_LEFT">
+            <Label fx:id="verifyTitle" text="Scan a bike to verify" styleClass="panel-title"/>
+            <Label fx:id="bikeIdLabel" text="Bike ID: —" styleClass="identity-line"/>
+            <Label fx:id="modelLabel" text="Model: —" styleClass="identity-line"/>
+            <Label fx:id="registrationLabel" text="Registration: —" styleClass="identity-line"/>
+            <Label fx:id="statusValueLabel" text="Status: —" styleClass="identity-line"/>
+        </VBox>
+    </VBox>
+</StackPane>

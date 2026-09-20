@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bikevault.controller.SettingsController"
+      spacing="16" styleClass="module-root">
+    <padding>
+        <Insets top="8" right="18" bottom="16" left="18"/>
+    </padding>
+
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="Workspace settings" styleClass="panel-title"/>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <ProgressIndicator fx:id="busyIndicator" prefWidth="22" prefHeight="22" visible="false" managed="false"/>
+    </HBox>
+
+    <HBox spacing="16">
+        <VBox spacing="12" styleClass="form-card" prefWidth="420">
+            <Label text="MySQL connection" styleClass="panel-title"/>
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="65" hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Host" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="hostField" editable="false" styleClass="readonly-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Port" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="portField" editable="false" styleClass="readonly-field" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Database" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="databaseField" editable="false" styleClass="readonly-field" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="User" styleClass="field-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="userField" editable="false" styleClass="readonly-field" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+            <Label fx:id="connectionStatus" text="Connection has not been tested." styleClass="muted-label"/>
+            <HBox spacing="10">
+                <Button text="Test connection" styleClass="primary-button" onAction="#onTestConnection"/>
+            </HBox>
+            <Label text="These values are loaded from environment variables or application.properties. Change those files and restart the app to point at another MySQL instance. They are never hard-coded in Java sources."
+                   wrapText="true" styleClass="muted-label"/>
+        </VBox>
+
+        <VBox spacing="12" styleClass="form-card" prefWidth="420">
+            <Label text="QR identity folder" styleClass="panel-title"/>
+            <Label text="Generated PNG files are stored here and never overwritten." wrapText="true" styleClass="muted-label"/>
+            <TextField fx:id="qrFolderField" editable="false"/>
+            <Label fx:id="qrFolderStatus" text="" styleClass="muted-label"/>
+            <HBox spacing="10">
+                <Button text="Open folder" styleClass="secondary-button" onAction="#onOpenQrFolder"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="16">
+        <VBox spacing="12" styleClass="form-card" prefWidth="420">
+            <Label text="Change password" styleClass="panel-title"/>
+            <Label text="Current password" styleClass="field-label"/>
+            <PasswordField fx:id="currentPasswordField"/>
+            <Label text="New password" styleClass="field-label"/>
+            <PasswordField fx:id="newPasswordField"/>
+            <Label text="Confirm new password" styleClass="field-label"/>
+            <PasswordField fx:id="confirmPasswordField"/>
+            <CheckBox fx:id="confirmChangeCheck" text="I confirm this password change"/>
+            <HBox spacing="10">
+                <Button text="Update password" styleClass="secondary-button" onAction="#onChangePassword"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="12" styleClass="form-card" prefWidth="420">
+            <Label text="Signed-in operator" styleClass="panel-title"/>
+            <Label fx:id="sessionNameLabel" text="" styleClass="identity-id"/>
+            <Label fx:id="sessionRoleLabel" text="" styleClass="identity-line"/>
+            <Label fx:id="sessionUserLabel" text="" styleClass="muted-label"/>
+            <Label text="Staff can create rentals, returns, and payments. Only administrators can delete master records."
+                   wrapText="true" styleClass="muted-label"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="16">
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="BUSINESS" styleClass="kicker-label"/>
+            <Label text="BikeVault Control Center" styleClass="panel-title"/>
+            <Label text="Premium motorcycle rental operations. Brand, rates, and fleet identity stay in MySQL." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="RENTAL RULES" styleClass="kicker-label"/>
+            <Label text="License required. Admin approval after payment. Late fees follow category settings." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="PAYMENT" styleClass="kicker-label"/>
+            <Label text="UPI, card, and cash are recorded as COMPLETED payments before a rental request is created." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+    </HBox>
+    <HBox spacing="16">
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="NOTIFICATIONS" styleClass="kicker-label"/>
+            <Label text="Approval, return, and penalty events write to the audit log for operators." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="SECURITY" styleClass="kicker-label"/>
+            <Label text="PBKDF2 passwords, role guards, and rental QR tokens. Never share admin credentials." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+        <VBox spacing="8" styleClass="form-card" prefWidth="270">
+            <Label text="APPEARANCE" styleClass="kicker-label"/>
+            <Label text="Customer marketplace stays light. Admin Control Center stays dark charcoal with gold accents." wrapText="true" styleClass="muted-label"/>
+        </VBox>
+    </HBox>
+</VBox>

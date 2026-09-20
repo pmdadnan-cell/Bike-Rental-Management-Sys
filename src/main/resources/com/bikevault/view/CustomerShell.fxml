@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bikevault.controller.CustomerShellController"
+            styleClass="customer-root">
+
+    <left>
+        <VBox styleClass="customer-sidebar" prefWidth="232" spacing="6">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fx:id="brandMarkView" fitWidth="36" fitHeight="36"/>
+                <VBox>
+                    <Label text="BIKEVAULT" styleClass="customer-brand-title"/>
+                    <Label text="Find your ride" styleClass="customer-brand-sub"/>
+                </VBox>
+            </HBox>
+            <Separator/>
+            <Button fx:id="navHome" text="Home" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavHome"/>
+            <Button fx:id="navBrowse" text="Browse Bikes" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavBrowse"/>
+            <Button fx:id="navTrips" text="My Trips" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavTrips"/>
+            <Button fx:id="navQr" text="Rental QR" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavQr"/>
+            <Button fx:id="navPenalties" text="My Penalties" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavPenalties"/>
+            <Button fx:id="navIncident" text="Report Incident" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavIncident"/>
+            <Button fx:id="navProfile" text="My Profile" styleClass="customer-nav" maxWidth="Infinity" onAction="#onNavProfile"/>
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Label fx:id="userNameLabel" styleClass="customer-brand-sub"/>
+            <Button fx:id="navLogout" text="Logout" styleClass="customer-nav" maxWidth="Infinity" onAction="#onLogout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="customer-workspace">
+            <HBox styleClass="customer-header" spacing="16" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="16" right="22" bottom="16" left="22"/>
+                </padding>
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                    <Label text="CUSTOMER" styleClass="customer-kicker"/>
+                    <Label fx:id="sectionTitleLabel" text="Home" styleClass="customer-title"/>
+                </VBox>
+                <Label fx:id="clockLabel" styleClass="customer-tagline"/>
+            </HBox>
+            <StackPane fx:id="contentHost" VBox.vgrow="ALWAYS">
+                <ScrollPane fitToWidth="true" style="-fx-background: transparent;">
+                    <VBox fx:id="homeView" spacing="18">
+                        <padding>
+                            <Insets top="18" right="24" bottom="24" left="24"/>
+                        </padding>
+                        <Label fx:id="welcomeLabel" text="Welcome" styleClass="customer-hero"/>
+                        <Label text="Find your perfect ride." styleClass="customer-tagline"/>
+                        <HBox spacing="12">
+                            <VBox styleClass="stat-pill" spacing="4">
+                                <Label text="AVAILABLE BIKES" styleClass="stat-pill-label"/>
+                                <Label fx:id="availableValue" text="—" styleClass="stat-pill-value"/>
+                            </VBox>
+                            <VBox styleClass="stat-pill" spacing="4">
+                                <Label text="TOTAL SPENT" styleClass="stat-pill-label"/>
+                                <Label fx:id="outstandingValue" text="—" styleClass="stat-pill-value"/>
+                            </VBox>
+                            <VBox styleClass="stat-pill" spacing="4">
+                                <Label text="ACTIVE PENALTIES" styleClass="stat-pill-label"/>
+                                <Label fx:id="penaltyValue" text="—" styleClass="stat-pill-value"/>
+                            </VBox>
+                        </HBox>
+                        <Button text="BROWSE BIKES" styleClass="primary-button" onAction="#onBrowse" prefWidth="180"/>
+                        <VBox spacing="8" styleClass="active-rental-card">
+                            <Label text="MY ACTIVE RENTAL" styleClass="customer-kicker"/>
+                            <Label fx:id="activeRentalLabel" wrapText="true"/>
+                            <HBox spacing="10">
+                                <Button text="VIEW RENTAL" styleClass="secondary-button" onAction="#onNavTrips"/>
+                                <Button fx:id="returnBikeButton" text="RETURN BIKE" styleClass="primary-button" onAction="#onReturnBike"/>
+                            </HBox>
+                        </VBox>
+                        <Label text="AVAILABLE BIKES" styleClass="customer-title"/>
+                        <FlowPane fx:id="featuredPane" hgap="14" vgap="14"/>
+                    </VBox>
+                </ScrollPane>
+            </StackPane>
+        </VBox>
+    </center>
+</BorderPane>
